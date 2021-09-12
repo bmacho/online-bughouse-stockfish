@@ -1,2 +1,2 @@
 # online-bughouse-stockfish
-The repository of https://online-bughouse-stockfish.herokuapp.com/
+The repository of https://online-drophouse-stockfish.herokuapp.com/
