@@ -1,0 +1,196 @@
+:root {
+  --ranks-right: -15px;
+  --ranks-top: 0px;
+  --files-bottom: -16px;
+  --files-left: 0px;
+  --ranks-top-shogi: -25px;
+  --files: 8;
+  --ranks: 8;
+  --editorLength: 6;
+  --pocketLength: 5;
+  --pocketMargin: 10px;
+  --movelist-max-height: 8rem;
+}
+#extension_choice {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  background: rgba(250, 250, 250, 0.7);
+  text-align: center;
+  z-index: 5;
+}
+#extension_choice square {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 12.5%;
+  height: 12.5%;
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: #b0b0b0;
+  box-shadow: inset 0 0 25px 3px #808080;
+  box-sizing: border-box;
+  transition: 0.2s;
+}
+.cg-640 #extension_choice square {
+  width: 10%;
+}
+.cg-576 #extension_choice square {
+  height: 11.11%;
+  width: 11.11%;
+}
+.cg-448-516  #extension_choice square {
+  width: 14.2857%;
+  height: 14.2857%;
+}
+.cg-640-640 #extension_choice square {
+  height: 10%;
+  width: 10%;
+}
+.cg-260-360 #extension_choice square {
+  width: 20%;
+  height: 16.66%;
+}
+.cg-260 #extension_choice square {
+  height: 20%;
+  width: 20%;
+}
+.cg-156 #extension_choice square {
+  height: 25%;
+  width: 33.33%;
+}
+#extension_choice piece {
+  pointer-events: auto;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: 0.2s;
+  transform: scale(0.8);
+}
+#extension_choice square:hover {
+  box-shadow: inset 0 0 48px 8px #d85000;
+  border-radius: 0%;
+  transform: none;
+}
+
+.cg-wrap.pocket {
+  display: inline;
+}
+
+.pocket {
+  width: calc(var(--pocketLength) * (var(--cgwrapwidth) / var(--files)));
+  height: calc(var(--cgwrapheight) / var(--ranks));
+  border-radius: 3px;
+  box-shadow: 0 2px 3px rgba(0,0,0,0.3) inset;
+  background: #888;
+  white-space: nowrap;
+  display: flex;
+}
+.pocket.top {
+  margin-bottom: var(--pocketMargin);
+}
+.pocket.top.editor {
+  margin-bottom: 18px;
+}
+.pocket.bottom {
+  margin-top: var(--pocketMargin);
+}
+.pocket.bottom.editor {
+  margin-top: 18px;
+}
+.pocket .editor{
+  width: calc(var(--editorLength) * (var(--cgwrapwidth) / var(--files)));
+}
+.pocket piece {
+  flex: 0 0 calc(100% / var(--pocketLength));
+  height: 100%!important;
+  width: 100%!important;
+  position: relative!important;
+  background-position: center;
+}
+
+.pocket piece.selected-square{
+  background-color: #14551e80 !important;
+}
+
+.pocket .editor piece {
+  flex: 0 0 calc(100% / var(--editorLength));
+}
+.pocket.usable piece:first-child:hover {
+  border-radius: 3px 0 0 3px;
+}
+.pocket.usable piece {
+  cursor: pointer;
+  pointer-events: auto;
+}
+.pocket.usable piece:hover {
+  background-color: #999;
+  transition: background-color 0.13s;
+}
+.pocket.usable piece.premove {
+  background-color: #555;
+}
+.pocket.usable piece.premove:hover {
+  background-color: #666;
+}
+.pocket piece[data-nb='0'] {
+  cursor: auto;
+  opacity: 0.1;
+}
+.pocket piece::after {
+  content: attr(data-nb);
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  line-height: 0.9em;
+  padding: 3px 5px 4px 5px;
+  font-weight: bold;
+  border-radius: 2px;
+  font-size: 1.1em;
+}
+.pocket piece[data-nb='0']::after {
+  content: none;
+}
+/* board editor pieces are unlimited */
+.pocket piece[data-nb='-1']::after {
+  content: none;
+}
+.pocket piece::after {
+  color: #fff !important;
+  text-shadow: 0 1px 0 #000 !important;
+  background: #d85000 !important;
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15) inset !important;
+}
+
+.shogi .cg-wrap coords.files, .kyoto .cg-wrap coords.files, .dobutsu .cg-wrap coords.files, .tori .cg-wrap coords.files {
+  left: auto;
+  right: var(--ranks-right);
+  top: 0;
+  flex-flow: column-reverse;
+  height: 100%;
+  width: 12px;
+}
+.shogi .cg-wrap coords.files.black, .kyoto .cg-wrap coords.files.black, .dobutsu .cg-wrap coords.files.black, .tori .cg-wrap coords.files.black {
+  flex-flow: column;
+}
+.shogi .cg-wrap coords.ranks, .kyoto .cg-wrap coords.ranks, .dobutsu .cg-wrap coords.ranks, .tori .cg-wrap coords.ranks {
+  top: var(--ranks-top-shogi);
+  left: 0;
+  flex-flow: row;
+  width: 100%;
+  height: 16px;
+  text-align: center;
+}
+.shogi .cg-wrap coords.ranks.black, .kyoto .cg-wrap coords.ranks.black, .dobutsu .cg-wrap coords.ranks.black, .tori .cg-wrap coords.ranks.black {
+  flex-flow: row-reverse;
+}
+.shogi .cg-wrap coords coord, .kyoto .cg-wrap coords coord, .dobutsu .cg-wrap coords coord, .tori .cg-wrap coords coord {
+  flex: 1 1 auto;
+}
+.shogi .cg-wrap coords.files coord, .kyoto .cg-wrap coords.files coord, .dobutsu .cg-wrap coords.files coord, .tori .cg-wrap coords.files coord {
+  transform: translateY(39%);
+}
