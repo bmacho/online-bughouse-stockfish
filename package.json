@@ -1,0 +1,22 @@
+{
+  "name": "online-drophouse-stockfish",
+  "version": "1.0.0",
+  "description": "A drophouse analysis board with stockfish integration",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bmacho/online-drophouse-stockfish.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bmacho/online-drophouse-stockfish/issues"
+  },
+  "homepage": "https://github.com/bmacho/online-drophouse-stockfish#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
